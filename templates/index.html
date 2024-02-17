@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Findings - Rah McRae</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="image-container" style="background-image: url('{{ image_post.url }}');">
+        <div id="quote-overlay">
+            <blockquote>"{{ quote_post.title }}" - u/{{ quote_post.author }}</blockquote>
+        </div>
+        <div id="source-container">
+            <a href="http://www.reddit.com{{ image_post.permalink }}" target="_blank">Image Source</a> | 
+            <a href="http://www.reddit.com{{ quote_post.permalink }}" target="_blank">Quote Source</a>
+        </div>
+    </div>
+</body>
+</html>
