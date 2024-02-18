@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     # Lists of subreddits to choose from
-    image_subreddits = ['earthporn', 'CityPorn', 'NatureIsFuckingLit','space']
+    image_subreddits = ['earthporn', 'CityPorn', 'NatureIsFuckingLit','architecture','ArchitecturePorn','LandscapePhotography']
     text_subreddits = ['NoStupidQuestions', 'showerthoughts', 'todayilearned','askscience']
     
     # Fetch data from a random subreddit from the provided lists

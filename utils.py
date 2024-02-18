@@ -1,7 +1,7 @@
 import requests
 import random
 
-def fetch_reddit_data(subreddits, limit=100):
+def fetch_reddit_data(subreddits, limit=1000):
     subreddit = random.choice(subreddits)  # Select a random subreddit from the list
     url = f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=all&limit={limit}"
     headers = {'User-Agent': 'Mozilla/5.0'}
