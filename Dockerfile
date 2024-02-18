@@ -13,8 +13,5 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Make port 80 available to the world outside this container
 EXPOSE 8080
 
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py", "--host=0.0.0.0"]
+# Run app.py using Gunicorn when the container launches
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
