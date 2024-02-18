@@ -15,4 +15,5 @@ def home():
     return render_template('index.html', image_post=image_post, quote_post=quote_post)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    print("Application is accessible via: http://localhost:8080")
+    app.run(host='0.0.0.0', debug=True)
