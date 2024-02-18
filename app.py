@@ -5,13 +5,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    image_data = fetch_reddit_data('earthporn')
-    text_data = fetch_reddit_data('science')
+    # Lists of subreddits to choose from
+    image_subreddits = ['earthporn', 'CityPorn', 'NatureIsFuckingLit','space']
+    text_subreddits = ['NoStupidQuestions', 'showerthoughts', 'todayilearned','askscience']
     
-    image_post = get_random_post(image_data)
-    quote_post = get_random_post(text_data)
+    # Fetch data from a random subreddit from the provided lists
+    image_data = fetch_reddit_data(image_subreddits)
+    text_data = fetch_reddit_data(text_subreddits)
     
-    # return image_post,quote_post
+    image_post = get_random_image_post(image_data)
+    quote_post = get_random_text_post(text_data)
+    
     return render_template('index.html', image_post=image_post, quote_post=quote_post)
 
 if __name__ == '__main__':
