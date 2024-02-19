@@ -4,10 +4,26 @@ import random
 def fetch_reddit_data(subreddits, limit=1000):
     subreddit = random.choice(subreddits)  # Select a random subreddit from the list
     url = f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=all&limit={limit}"
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    response = requests.get(url, headers=headers)
-    data = response.json()
-    return data
+    # Use a more descriptive User-Agent string
+    headers = {'User-Agent': 'RahRedditApp/1.0'}
+    
+    try:
+        response = requests.get(url, headers=headers)
+        # Check if the response status code is 200 (OK)
+        response.raise_for_status()
+        # Ensure the response is in JSON format
+        if 'application/json' in response.headers.get('Content-Type'):
+            data = response.json()
+            return data
+        else:
+            # Handle unexpected content type
+            print(f"Unexpected content type: {response.headers.get('Content-Type')}")
+    except requests.exceptions.RequestException as e:
+        # Handle request errors (including status code errors)
+        print(f"Request failed: {e}")
+    
+    # Return None or a default value if the request fails
+    return None
 
 def get_random_text_post(data):
     posts = data['data']['children']
