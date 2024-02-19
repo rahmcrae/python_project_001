@@ -32,10 +32,12 @@ def get_random_text_post(data):
 def get_random_image_post(data, attempts=0):
     posts = data['data']['children']
     post = random.choice(posts)['data']
-    # Limit the number of attempts to prevent infinite recursion
-    if attempts > 10:
-        return None  # Or return a default image post
+    
     if 'post_hint' in post and post['post_hint'] == 'image':
         return post
+
+    elif attempts > 10:
+        return None  # Or return a default image post
+
     else:
         return get_random_image_post(data, attempts + 1)
