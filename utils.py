@@ -5,7 +5,7 @@ def fetch_reddit_data(subreddits, limit=1000):
     subreddit = random.choice(subreddits)  # Select a random subreddit from the list
     url = f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=all&limit={limit}"
     # Use a more descriptive User-Agent string
-    headers = {'User-Agent': 'RahRedditApp/1.0'}
+    headers = {'User-Agent': 'RahRedditApp/1.0 by /u/Extreme_Yak1356'}
     
     try:
         response = requests.get(url, headers=headers)
