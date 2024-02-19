@@ -1,0 +1,2 @@
+image_subreddits = ['earthporn', 'CityPorn', 'NatureIsFuckingLit','architecture','ArchitecturePorn','LandscapePhotography']
+text_subreddits = ['NoStupidQuestions', 'showerthoughts', 'todayilearned','askscience']

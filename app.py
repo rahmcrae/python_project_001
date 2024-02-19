@@ -1,14 +1,11 @@
 from flask import *
-from utils import *
+from utils.utils import *
+from utils.subreddit_list import *
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    # Lists of subreddits to choose from
-    image_subreddits = ['earthporn', 'CityPorn', 'NatureIsFuckingLit','architecture','ArchitecturePorn','LandscapePhotography']
-    text_subreddits = ['NoStupidQuestions', 'showerthoughts', 'todayilearned','askscience']
-    
+def home():     
     # Fetch data from a random subreddit from the provided lists
     image_data = fetch_reddit_data(image_subreddits)
     text_data = fetch_reddit_data(text_subreddits)
@@ -19,5 +16,4 @@ def home():
     return render_template('index.html', image_post=image_post, quote_post=quote_post)
 
 if __name__ == '__main__':
-    print("Application is accessible via: http://localhost:8080")
     app.run( debug=True)
